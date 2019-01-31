@@ -1,0 +1,14 @@
+<ul class="nav nav-pills justify-content-end mr-3 language-filter">
+    <li class="nav-item">
+        {{ form_open({ request: __SELF__~'::onSetLanguage' }) }}
+        <input type="hidden" name="lang" value="en">
+        <button type="submit" class="btn nav-link{% if lang == 'en' %} active{% endif %}">English</button>
+        {{ form_close() }}
+    </li>
+    <li class="nav-item">
+        {{ form_open({ request: __SELF__~'::onSetLanguage' }) }}
+        <input type="hidden" name="lang" value="jp">
+        <button type="submit" class="btn nav-link{% if lang == 'jp' %} active{% endif %}">日本語</button>
+        {{ form_close() }}
+    </li>
+</ul>

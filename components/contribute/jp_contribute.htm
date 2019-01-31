@@ -1,0 +1,32 @@
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <div class="text-center">
+        <h1>寄付する</h1>
+        <div class="d-flex flex-column text-center mb-3 contribute-wrapper">
+            <div class="contribute-top">
+                <p>
+                    すべての寄付は<em>The Feast World Cup</em>トーナメントの賞金に向けられます<br>
+                    金銭以外での貢献・支援をお考えの方は pvpaissa@gmail.com までご連絡ください
+                </p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value="B33RSHEJRSY36" />
+                    <input type="image" src="/plugins/cleanse/worldcup/assets/images/donate-jp.png" class="img-fluid"
+                           border="0" name="submit"
+                           alt="Donate to The Feast World Cup with PayPal." />
+                    <img alt="Donate to The Feast World Cup"
+                         border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+            </div>
+
+            <div class="back-to mt-auto">
+                <a class="btn btn-primary" href="/world-cup">The Feast World Cupウェブサイトに戻る</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <p class="small text-center">
+            <small>{{ "now"|date("Y") }} <a href="/">PvPaissa</a>. All rights reserved.</small>
+        </p>
+    </div>
+</div>

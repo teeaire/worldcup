@@ -1,0 +1,188 @@
+@import "../../../../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  background: url("/plugins/cleanse/worldcup/assets/images/feastCupBG.jpeg") center fixed;
+  background-size: cover;
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: #24428E;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover,
+a:focus {
+  color: #AB001C;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.bg-cup {
+  background-color: rgba(248, 249, 250, 0.69) !important;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #24428E;
+  border-color: #24428E;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active
+{
+  color: #fff;
+  background-color: #AB001C;
+  border-color: #AB001C;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #24428E;
+}
+.nav-pills .nav-link:hover.active,
+.nav-pills .show > .nav-link:hover {
+  background-color: #AB001C;
+  text-decoration: none;
+}
+
+.language-filter {
+  .nav-link {
+    color: #ffffff;
+    background: transparent !important;
+  }
+  .nav-link:hover {
+    background: #AB001C !important;
+  }
+
+  .nav-link.active {
+    color: #fff;
+    background: #24428E !important;
+  }
+
+  .nav-link {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+}
+
+.logo-header {
+  text-align: center;
+}
+
+.main-logo {
+  width: 420px;
+  margin: 0 0 1.25rem;
+}
+
+.xiv-logo {
+  background: url("../images/xiv-logo-sm.png") no-repeat center center;
+  text-indent: -9000px;
+}
+
+.main-nav {
+  a {
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+    background-color: transparent;
+  }
+  a.active:hover,
+  a.active:focus {
+    text-decoration: none;
+  }
+
+  .nav {
+    background: rgba(0, 0, 0, .33);
+  }
+}
+
+.cup-content {
+  .card {
+    box-shadow: 0 1px 1px #4B4B4B;
+  }
+}
+
+.cup-header-wrapper {
+  position: relative;
+  min-height: 65px;
+  margin-bottom: .5rem;
+}
+
+.cup-header-logo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3369;
+}
+
+.cup-header {
+  width: 100%;
+  z-index: 133;
+  position: absolute;
+  top: 18px;
+  padding: .5rem 0 .5rem 4rem;
+  background: #24428E;
+  background: -moz-linear-gradient(top, #24428E 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #24428E 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* Chrome/SafariOld */
+  background: linear-gradient(to bottom, #24428E 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#24428E', endColorstr='#7db9e8', GradientType=0);
+  box-shadow: 0px 1px 1px #4B4B4B;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  border-radius: .5rem;
+  color: #fff;
+  text-shadow: 1px 2px 1px #000;
+}
+
+.register-button {
+  text-align: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+#home .card-body > ul > li {
+  margin-bottom: 1.25rem;
+}
+
+.contribute-wrapper {
+  height: 66vh;
+}
+
+@media screen and (max-width: 575px) {
+  h3, .h3 {
+    font-size: 1.5rem;
+  }
+
+  .main-logo {
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .cup-header-wrapper {
+    margin-bottom: .15rem;
+  }
+}
