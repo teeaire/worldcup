@@ -1,6 +1,7 @@
 <div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
     <div class="cup-intro">
         <h1>The Feast World Cup Rules</h1>
+        <p class="card-text text-center"><em>Updated: Feb. 24, 2019 - <a href="#rule-changes">View Changes</a></em></p>
     </div>
 
     <div class="cup-header-wrapper">
@@ -137,8 +138,8 @@
                     In the case of a server-wide or data center-wide network issue, a rematch will be played
                     regardless, or postponed until the network issues have been alleviated.
                 </li>
-                <li>In The Feast World Cup: Main Event, qualified teams will play in all 3 regional data centers
-                    (Aether, Chaos, Mana) depending on the match-up.
+                <li id="ping-issues"><strong>In The Feast World Cup: Main Event</strong>, qualified teams will play in
+                    all 3 regional data centers (Aether, Chaos, Mana) depending on the match-up.
                     <ul>
                         <li>
                             I.e. If a North American PvP team seeded #2 in the North American Major Qualifiers plays a
@@ -313,8 +314,8 @@
                     </ul>
                 </li>
             </ul>
-            <p class="card-text text-center"><em>Updated: Feb. 24, 2019</em></p>
         </div>
+        {% partial __SELF__~'::en_changes' %}
     </div>
 
     <p class="small text-center">
