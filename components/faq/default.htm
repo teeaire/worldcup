@@ -1,0 +1,9 @@
+{% partial __SELF__~'::_language' %}
+{% partial __SELF__~'::_header' %}
+{% if lang == 'jp' %}
+{% partial __SELF__~'::_jp_nav' %}
+{% partial __SELF__~'::jp_faq' %}
+{% else %}
+{% partial __SELF__~'::_en_nav' %}
+{% partial __SELF__~'::en_faq' %}
+{% endif %}
