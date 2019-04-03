@@ -16,8 +16,17 @@
                     <div class="col-6">
                         <div class="player-roles">
                             {% for role in r.roles %}
+                            {% if role == 'tank' %}
+                            {% set role_jp = 'タンク' %}
+                            {% elseif role == 'healer' %}
+                            {% set role_jp = 'ヒーラー' %}
+                            {% elseif role == 'melee' %}
+                            {% set role_jp = 'メレー' %}
+                            {% elseif role == 'ranged' %}
+                            {% set role_jp = 'レンジ' %}
+                            {% endif %}
                             <a href="/world-cup/recruits/{{ role }}">
-                                <span class="mr-1 badge badge-{{ role }}">{{ role|capitalize }}</span>
+                                <span class="mr-1 badge badge-{{ role }}">{{ role_jp|capitalize }}</span>
                             </a>
                             {% endfor %}
                         </div>
