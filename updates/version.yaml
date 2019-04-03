@@ -1,2 +1,5 @@
 1.0.1:
-    - World Cup initial version.
+  - World Cup initial version.
+1.1.0:
+  - Added 'Recruit' section.
+  - add_recruits_tables.php

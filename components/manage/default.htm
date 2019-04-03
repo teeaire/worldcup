@@ -1,0 +1,66 @@
+{% partial __SELF__~'::_language' %}
+
+<div class="col-lg-8 offset-lg-2 flex-column align-items-center justify-content-center logo-header mb-3">
+    <img src="/plugins/cleanse/worldcup/assets/images/logo-62-65.png"
+         class="main-logo-off" alt="The Feast World Cup Logo">
+    <div class="xiv-logo">Final Fantasy XIV</div>
+</div>
+
+{% if lang == 'jp' %}
+{% partial __SELF__~'::_jp_nav' %}
+{% else %}
+{% partial __SELF__~'::_en_nav' %}
+{% endif %}
+
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <h1>Manage Recruits</h1>
+
+    <div class="mt-2 card">
+        <div class="card-body">
+            {% if recruits.count > 0 %}
+
+            {% for recruit in recruits %}
+            <div class="row align-items-center border-bottom border-secondary pb-1">
+                <div class="col-6">
+                    {{ recruit.name }}
+                </div>
+
+                <div class="col-6 d-flex flex-row-reverse">
+                    {{ form_ajax('onRecruited') }}
+                    <input type="hidden" name="id" value="{{ recruit.id }}">
+                    <input type="hidden" name="recruited" value="{{ recruit.recruited }}">
+                    {% if recruit.recruited == 0 %}
+                    {% set status = 'Recruited' %}
+                    {% else %}
+                    {% set status = 'Set As Not Recruited' %}
+                    {% endif %}
+                    <button type="submit" class="btn btn-info btn-sm mr-1">{{ status }}</button>
+                    {{ form_close() }}
+
+                    {{ form_ajax('onDeleted', { confirm: 'Really delete this record?' }) }}
+                    <input type="hidden" name="id" value="{{ recruit.id }}">
+                    <button type="submit" class="btn btn-danger btn-sm mr-2">
+                        Remove Character</button>
+                    {{ form_close() }}
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% else %}
+            <p>No recruits.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="{{ [
+            'assets/js/jquery.min.js',
+            'assets/js/popper.min.js',
+            'assets/js/bootstrap.min.js',
+            '@framework',
+            '@framework.extras',
+            'assets/js/pvpaissa.js'
+        ]|theme }}"></script>
+{% scripts %}

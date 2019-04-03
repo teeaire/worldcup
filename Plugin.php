@@ -32,13 +32,19 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Cleanse\WorldCup\Components\Home'          => 'cleanseCupHome',
-            'Cleanse\WorldCup\Components\Rules'         => 'cleanseCupRules',
-            'Cleanse\WorldCup\Components\Registration'  => 'cleanseCupRegister',
-            'Cleanse\WorldCup\Components\FAQ'           => 'cleanseCupFAQ',
-            'Cleanse\WorldCup\Components\Results'       => 'cleanseCupResults',
-            'Cleanse\WorldCup\Components\Contribute'    => 'cleanseCupContribute',
-            'Cleanse\WorldCup\Components\Thanks'        => 'cleanseCupThanks'
+            'Cleanse\WorldCup\Components\Home'         => 'cleanseCupHome',
+            'Cleanse\WorldCup\Components\Rules'        => 'cleanseCupRules',
+            'Cleanse\WorldCup\Components\Registration' => 'cleanseCupRegister',
+            'Cleanse\WorldCup\Components\FAQ'          => 'cleanseCupFAQ',
+            'Cleanse\WorldCup\Components\Results'      => 'cleanseCupResults',
+            'Cleanse\WorldCup\Components\Contribute'   => 'cleanseCupContribute',
+            'Cleanse\WorldCup\Components\Thanks'       => 'cleanseCupThanks',
+
+            //Recruit App
+            'Cleanse\WorldCup\Components\Recruits'     => 'cleanseCupRecruits',
+            'Cleanse\WorldCup\Components\Roles'        => 'cleanseCupRecruitsRoles',
+            'Cleanse\WorldCup\Components\Recruit'      => 'cleanseCupRecruit',
+            'Cleanse\WorldCup\Components\Manage'       => 'cleanseCupManageRecruits'
         ];
     }
 }

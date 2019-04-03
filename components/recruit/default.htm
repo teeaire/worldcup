@@ -1,0 +1,37 @@
+{% partial __SELF__~'::_language' %}
+
+<div class="col-lg-8 offset-lg-2 flex-column align-items-center justify-content-center logo-header mb-3">
+    <img src="/plugins/cleanse/worldcup/assets/images/logo-62-65.png"
+         class="main-logo-off" alt="The Feast World Cup Logo">
+    <div class="xiv-logo">Final Fantasy XIV</div>
+</div>
+
+{% if lang == 'jp' %}
+{% partial __SELF__~'::_jp_nav' %}
+{% else %}
+{% partial __SELF__~'::_en_nav' %}
+{% endif %}
+
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <a href="/world-cup/recruits">Back to Recruitment Board</a>
+{% if recruit %}
+    <h1>Your Profile</h1>
+    {% partial __SELF__~'::recruitment_edit' %}
+{% else %}
+    <h1>Recruitment Board Application</h1>
+    {% partial __SELF__~'::recruitment_form' %}
+{% endif %}
+
+    {% partial __SELF__~'::_footer' %}
+</div>
+
+<!-- Scripts -->
+<script src="{{ [
+            'assets/js/jquery.min.js',
+            'assets/js/popper.min.js',
+            'assets/js/bootstrap.min.js',
+            '@framework',
+            '@framework.extras',
+            'assets/js/pvpaissa.js'
+        ]|theme }}"></script>
+{% scripts %}

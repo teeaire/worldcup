@@ -48,6 +48,26 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #AB001C;
 }
 
+.badge-tank {
+  color: #fff;
+  background-color: #4A90E2;
+}
+
+.badge-healer {
+  color: #fff;
+  background-color: #4AE272;
+}
+
+.badge-melee {
+  color: #fff;
+  background-color: #E24A72;
+}
+
+.badge-ranged {
+  color: #fff;
+  background-color: #802A42;
+}
+
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;

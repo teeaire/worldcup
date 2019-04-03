@@ -1,0 +1,50 @@
+{% partial __SELF__~'::_language' %}
+
+<div class="col-lg-8 offset-lg-2 flex-column align-items-center justify-content-center logo-header mb-3">
+    <img src="/plugins/cleanse/worldcup/assets/images/logo-62-65.png"
+         class="main-logo-off" alt="The Feast World Cup Logo">
+    <div class="xiv-logo">Final Fantasy XIV</div>
+</div>
+
+{% if lang == 'jp' %}
+{% partial __SELF__~'::_jp_nav' %}
+{% else %}
+{% partial __SELF__~'::_en_nav' %}
+{% endif %}
+
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <h1>Recruitment Board</h1>
+    {% if recruited %}
+    <a class="btn btn-info" href="/world-cup/recruit">Update Your Character</a>
+    {% else %}
+    <a class="btn btn-primary" href="/world-cup/recruit">Add Your Character</a>
+    {% endif %}
+
+    <div class="mt-2 card">
+        <div class="card-body">
+            {% if recruits.count > 0 %}
+
+            <ul>
+                {% for r in recruits %}
+                <li class="row">
+                    <div class="col-4">{{ r.name }}</div>
+                    <div class="col-2">{{ r.region|upper }}</div>
+                    <div class="col-6">
+                        {% for role in r.roles %}
+                        <a href="/world-cup/recruits/{{ role }}">
+                            <span class="mr-1 badge badge-{{ role }}">{{ role|capitalize }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% else %}
+            <p>No recruits.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% partial __SELF__~'::_footer' %}
+</div>
