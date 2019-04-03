@@ -25,14 +25,20 @@
             {% for r in recruits %}
             <li class="list-group-item">
                 <div class="row">
-                    <div class="col-4">{{ r.name }}</div>
-                    <div class="col-2">{{ r.region|upper }}</div>
+                    <div class="col-3">{{ r.name }}</div>
+                    <div class="col-1">{{ r.region|upper }}</div>
                     <div class="col-6">
-                        {% for role in r.roles %}
-                        <a href="/world-cup/recruits/{{ role }}">
-                            <span class="mr-1 badge badge-{{ role }}">{{ role|capitalize }}</span>
-                        </a>
-                        {% endfor %}
+                        <div class="player-roles">
+                            {% for role in r.roles %}
+                            <a href="/world-cup/recruits/{{ role }}">
+                                <span class="mr-1 badge badge-{{ role }}">{{ role|capitalize }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="player-contact">
+                            <strong>Availability:</strong> {{ r.availability }}<br>
+                            <strong>Contact:</strong> {{ r.contact_method }}
+                        </div>
                     </div>
                 </div>
             </li>
