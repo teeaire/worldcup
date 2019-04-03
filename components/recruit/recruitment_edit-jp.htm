@@ -1,0 +1,73 @@
+<div class="d-flex flex-row-reverse">
+    {{ form_ajax('onDeleted', { confirm: '本当に削除してもよろしいですか？' }) }}
+    <input type="hidden" name="id" value="{{ recruit.id }}">
+    <button type="submit" class="btn btn-danger btn-sm mr-2">
+        削除</button>
+    {{ form_close() }}
+
+    {{ form_ajax('onRecruited') }}
+    <input type="hidden" name="id" value="{{ recruit.id }}">
+    <input type="hidden" name="recruited" value="{{ recruit.recruited }}">
+    {% if recruit.recruited == 0 %}
+    {% set status = 'チームが見つかりました！' %}
+    {% else %}
+    {% set status = 'チームを探しています！' %}
+    {% endif %}
+    <button type="submit" class="btn btn-warning btn-sm mr-1">{{ status }}</button>
+    {{ form_close() }}
+</div>
+
+{{ form_open({ request: __SELF__~'::onUpdateRecruit' }) }}
+<input type="hidden" name="id" value="{{ cookie }}">
+
+<div class="form-group">
+    <label for="name">キャラクター名</label>
+    <input type="text" class="form-control" id="name" name="name" value="{{ recruit.name }}">
+</div>
+
+<div class="form-group">
+    <label for="region">リージョン</label>
+    <select class="form-control" name="region" id="region">
+        <option value="">Select a region...</option>
+        <option value="eu"{% if recruit.region == 'eu' %} selected{% endif %}>欧州</option>
+        <option value="jp"{% if recruit.region == 'jp' %} selected{% endif %}>日本</option>
+        <option value="na"{% if recruit.region == 'na' %} selected{% endif %}>北米</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <p class="mb-0">プレイ可能ロール</p>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" name="roles[]" type="checkbox" id="tankCheckbox"
+               value="tank"{% if 'tank' in recruit.roles %} checked{% endif %}>
+        <label class="form-check-label" for="tankCheckbox">タンク</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" name="roles[]" type="checkbox" id="healerCheckbox"
+               value="healer"{% if 'healer' in recruit.roles %} checked{% endif %}>
+        <label class="form-check-label" for="healerCheckbox">ヒーラー</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" name="roles[]" type="checkbox" id="meleeCheckbox"
+               value="melee"{% if 'melee' in recruit.roles %} checked{% endif %}>
+        <label class="form-check-label" for="meleeCheckbox">メレー</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" name="roles[]" type="checkbox" id="rangedCheckbox"
+               value="ranged"{% if 'ranged' in recruit.roles %} checked{% endif %}>
+        <label class="form-check-label" for="rangedCheckbox">レンジ</label>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="availability">活動可能時間</label>
+    <textarea class="form-control" id="availability" name="availability">{{ recruit.availability }}</textarea>
+</div>
+
+<div class="form-group">
+    <label for="contact">連絡方法</label>
+    <textarea class="form-control" id="contact" name="contact">{{ recruit.contact_method }}</textarea>
+</div>
+
+<button type="submit" class="btn btn-primary">更新</button>
+{{ form_close() }}
