@@ -44,6 +44,7 @@ class Roles extends ComponentBase
         $this->page['lang']      = $this->getLanguage();
         $this->page['recruited'] = $this->getRecruitCookie();
         $this->page['recruits']  = $this->getRecruits();
+        $this->page['role']      = $this->role;
 
         $this->addCss('/plugins/cleanse/worldcup/assets/css/world-cup.css');
     }

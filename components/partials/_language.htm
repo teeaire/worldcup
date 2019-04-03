@@ -1,4 +1,7 @@
-<ul class="nav nav-pills justify-content-end mr-3 language-filter">
+<ul class="nav nav-pills justify-content-end mx-3 language-filter">
+    <li class="nav-item mr-auto">
+        <a class="btn nav-link active" href="/world-cup/recruits">Recruitment Board</a>
+    </li>
     <li class="nav-item">
         {{ form_open({ request: __SELF__~'::onSetLanguage' }) }}
         <input type="hidden" name="lang" value="en">

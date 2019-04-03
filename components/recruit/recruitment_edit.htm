@@ -1,3 +1,22 @@
+<div class="d-flex flex-row-reverse">
+    {{ form_ajax('onDeleted', { confirm: 'Really delete this record?' }) }}
+    <input type="hidden" name="id" value="{{ recruit.id }}">
+    <button type="submit" class="btn btn-danger btn-sm mr-2">
+        Remove My Character</button>
+    {{ form_close() }}
+
+    {{ form_ajax('onRecruited') }}
+    <input type="hidden" name="id" value="{{ recruit.id }}">
+    <input type="hidden" name="recruited" value="{{ recruit.recruited }}">
+    {% if recruit.recruited == 0 %}
+    {% set status = 'Found a team?' %}
+    {% else %}
+    {% set status = 'Need a team?' %}
+    {% endif %}
+    <button type="submit" class="btn btn-warning btn-sm mr-1">{{ status }}</button>
+    {{ form_close() }}
+</div>
+
 {{ form_open({ request: __SELF__~'::onUpdateRecruit' }) }}
 <input type="hidden" name="id" value="{{ cookie }}">
 

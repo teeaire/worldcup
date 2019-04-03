@@ -44,6 +44,8 @@ class Manage extends ComponentBase
         $recruit = Recruit::find(post('id'));
 
         $recruit->delete();
+
+        return Redirect::to('/world-cup/recruits/manage');
     }
 
     private function getRecruits()

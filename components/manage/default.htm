@@ -30,7 +30,7 @@
                     <input type="hidden" name="id" value="{{ recruit.id }}">
                     <input type="hidden" name="recruited" value="{{ recruit.recruited }}">
                     {% if recruit.recruited == 0 %}
-                    {% set status = 'Recruited' %}
+                    {% set status = 'Set As Recruited' %}
                     {% else %}
                     {% set status = 'Set As Not Recruited' %}
                     {% endif %}

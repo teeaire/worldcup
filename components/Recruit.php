@@ -62,6 +62,32 @@ class Recruit extends ComponentBase
         return redirect('/world-cup/recruits');
     }
 
+    public function onRecruited()
+    {
+        $recruit = Character::find(post('id'));
+
+        if ($recruit->recruited === 0) {
+            $recruit->recruited = 1;
+            $recruit->save();
+        } else {
+            $recruit->recruited = 0;
+            $recruit->save();
+        }
+
+        return Redirect::to('/world-cup/recruits');
+    }
+
+    public function onDeleted()
+    {
+        $recruit = Character::find(post('id'));
+
+        $recruit->delete();
+
+        Cookie::queue(Cookie::forget('recruit'));
+
+        return Redirect::to('/world-cup/recruits');
+    }
+
     private function createRecruit($form)
     {
         $newRecruit = new Character;
