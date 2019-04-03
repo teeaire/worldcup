@@ -1,26 +1,12 @@
-{% partial __SELF__~'::_language' %}
-
-<div class="col-lg-8 offset-lg-2 flex-column align-items-center justify-content-center logo-header mb-3">
-    <img src="/plugins/cleanse/worldcup/assets/images/logo-62-65.png"
-         class="main-logo-off" alt="The Feast World Cup Logo">
-    <div class="xiv-logo">Final Fantasy XIV</div>
-</div>
-
-{% if lang == 'jp' %}
-{% partial __SELF__~'::_jp_nav' %}
-{% else %}
-{% partial __SELF__~'::_en_nav' %}
-{% endif %}
-
 <div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
-    <h1>チーム参加希望者掲示板: {{ role|capitalize }}</h1>
+    <h1>Recruitment Board</h1>
     <div class="d-flex justify-content-between">
-        <a class="btn btn-primary" href="/world-cup/recruit">キャラクター追加/更新</a>
-        {% partial __SELF__~'::roles' %}
+        <a class="btn btn-primary" href="/world-cup/recruit">Add/Update Character</a>
+        {% partial __SELF__~'::en_roles' %}
     </div>
 
     <div class="mt-2 card">
-    {% if recruits.count > 0 %}
+        {% if recruits.count > 0 %}
         <ul class="list-group list-group-flush">
             {% for r in recruits %}
             <li class="list-group-item">
@@ -36,19 +22,19 @@
                             {% endfor %}
                         </div>
                         <div class="player-contact">
-                            <strong>活動可能時間:</strong> {{ r.availability }}<br>
-                            <strong>連絡先:</strong> {{ r.contact_method }}
+                            <strong>Availability:</strong> {{ r.availability }}<br>
+                            <strong>Contact:</strong> {{ r.contact_method }}
                         </div>
                     </div>
                 </div>
             </li>
             {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <div class="card-body">
-            <p>該当ロールの参加希望者が見つかりませんでした: <strong>{{ role|capitalize }}</strong>.</p>
+            <p>No recruits found.</p>
         </div>
-    {% endif %}
+        {% endif %}
 
     </div>
 

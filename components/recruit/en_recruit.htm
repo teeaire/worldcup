@@ -1,0 +1,12 @@
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <a href="/world-cup/recruits">Back to Recruitment Board</a>
+    {% if recruit %}
+    <h1>Your Profile</h1>
+    {% partial __SELF__~'::en_recruitment_edit' %}
+    {% else %}
+    <h1>Recruitment Board Application</h1>
+    {% partial __SELF__~'::en_recruitment_form' %}
+    {% endif %}
+
+    {% partial __SELF__~'::_footer' %}
+</div>

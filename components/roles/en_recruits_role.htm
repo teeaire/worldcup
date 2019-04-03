@@ -1,0 +1,42 @@
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <h1>Recruitment Board: {{ role|capitalize }}</h1>
+    <div class="d-flex justify-content-between">
+        <a class="btn btn-primary" href="/world-cup/recruit">Add/Update Character</a>
+        {% partial __SELF__~'::en_roles' %}
+    </div>
+
+    <div class="mt-2 card">
+        {% if recruits.count > 0 %}
+        <ul class="list-group list-group-flush">
+            {% for r in recruits %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-3">{{ r.name }}</div>
+                    <div class="col-1">{{ r.region|upper }}</div>
+                    <div class="col-6">
+                        <div class="player-roles">
+                            {% for role in r.roles %}
+                            <a href="/world-cup/recruits/{{ role }}">
+                                <span class="mr-1 badge badge-{{ role }}">{{ role|capitalize }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <div class="player-contact">
+                            <strong>Availability:</strong> {{ r.availability }}<br>
+                            <strong>Contact:</strong> {{ r.contact_method }}
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="card-body">
+            <p>No recruits with the role: <strong>{{ role|capitalize }}</strong>.</p>
+        </div>
+        {% endif %}
+
+    </div>
+
+    {% partial __SELF__~'::_footer' %}
+</div>
