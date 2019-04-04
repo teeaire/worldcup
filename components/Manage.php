@@ -19,8 +19,6 @@ class Manage extends ComponentBase
 
     public function onRun()
     {
-        $this->addCss('/plugins/cleanse/worldcup/assets/css/world-cup.css');
-
         $this->page['recruits'] = $this->getRecruits();
     }
 

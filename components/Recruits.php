@@ -22,9 +22,6 @@ class Recruits extends ComponentBase
     {
         $this->page['lang']   = $this->getLanguage();
         $this->page['recruited'] = $this->getRecruitCookie();
-
-        $this->addCss('/plugins/cleanse/worldcup/assets/css/world-cup.css');
-
         $this->page['recruits'] = $this->getRecruits();
     }
 

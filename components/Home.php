@@ -19,8 +19,6 @@ class Home extends ComponentBase
     public function onRun()
     {
         $this->page['lang'] = $this->getLanguage();
-
-        $this->addCss('/plugins/cleanse/worldcup/assets/css/world-cup.css');
     }
 
     private function getLanguage()

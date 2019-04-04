@@ -23,8 +23,6 @@ class Recruit extends ComponentBase
     {
         $this->page['lang'] = $this->getLanguage();
         $this->page['recruit'] = $this->getRecruit();
-
-        $this->addCss('/plugins/cleanse/worldcup/assets/css/world-cup.css');
     }
 
     public function onSetLanguage()
