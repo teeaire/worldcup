@@ -1,5 +1,14 @@
+{% if role == 'tank' %}
+{% set role_jp = 'タンク' %}
+{% elseif role == 'healer' %}
+{% set role_jp = 'ヒーラー' %}
+{% elseif role == 'melee' %}
+{% set role_jp = 'メレー' %}
+{% elseif role == 'ranged' %}
+{% set role_jp = 'レンジ' %}
+{% endif %}
 <div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
-    <h1>チーム参加希望者掲示板: {{ role|capitalize }}</h1>
+    <h1>チーム参加希望者掲示板: {{ role_jp }}</h1>
     <div class="d-flex justify-content-between">
         <a class="btn btn-primary" href="/world-cup/recruit">キャラクター追加/更新</a>
         {% partial __SELF__~'::jp_roles' %}
@@ -41,7 +50,7 @@
         </ul>
         {% else %}
         <div class="card-body">
-            <p>該当ロールの参加希望者が見つかりませんでした: <strong>{{ role|capitalize }}</strong>.</p>
+            <p>該当ロールの参加希望者が見つかりませんでした: <strong>{{ role_jp }}</strong>.</p>
         </div>
         {% endif %}
 
