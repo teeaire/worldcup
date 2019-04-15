@@ -1,0 +1,56 @@
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <h1>The Feast World Cup Teams</h1>
+
+    <div class="accordion mb-1" id="accordionRegions">
+        <div class="cup-header-wrapper">
+            <img class="cup-header-logo" src="/plugins/cleanse/worldcup/assets/images/logo-62-65.png"/>
+            <h3 class="cup-header">Registered Teams</h3>
+        </div>
+        {% for key, region in teams %}
+        <div class="card">
+            <div class="card-header" id="heading{{ key }}">
+                <h2 class="mb-0">
+                    <button class="btn btn-{{ key }}-link btn-block" type="button"
+                            data-toggle="collapse" data-target="#collapse{{ key }}"
+                            aria-expanded="false" aria-controls="collapse{{ key }}">
+                        {{ full_names[key] }} Teams ({{ region.count }})
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse{{ key }}" class="collapse" data-parent="#accordionRegions"
+                 aria-labelledby="heading{{ key }}">
+                <div class="card-body">
+                    {% for team in region %}
+                    <div class="team-wrapper {{ key }} media">
+                        <img src="{{ team.getLogoThumb(96) }}"
+                             class="img-thumbnail mr-3" alt="{{ team.name }}">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ team.name }}</h5>
+                            <ul class="team-roster">
+                                {% for p in team.players %}
+                                {% if p.rank == 1 %}
+                                {% set rank_class = 'leader' %}
+                                {% elseif p.rank == 2 %}
+                                {% set rank_class = 'sub-leader' %}
+                                {% else %}
+                                {% set rank_class = '' %}
+                                {% endif %}
+                                <li{% if p.rank <= 2 %} class="team-{{ rank_class }}"{% endif %}>{{ p.name }} ({{ p.server }})</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p class="ml-3">
+        <small>&#185; = Team Leader, &#178; = Sub-Leader</small>
+    </p>
+
+    {% partial __SELF__~'::_footer' %}
+</div>

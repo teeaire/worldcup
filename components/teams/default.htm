@@ -1,0 +1,17 @@
+{% partial __SELF__~'::_language' %}
+{% partial __SELF__~'::_header' %}
+{% if lang == 'jp' %}
+{% partial __SELF__~'::_jp_nav' %}
+{% partial __SELF__~'::jp_teams' %}
+{% else %}
+{% partial __SELF__~'::_en_nav' %}
+{% partial __SELF__~'::en_teams' %}
+{% endif %}
+<!-- Scripts -->
+<script src="{{ [
+            'assets/js/jquery.min.js',
+            'assets/js/popper.min.js',
+            'assets/js/bootstrap.min.js',
+            '@framework',
+            '@framework.extras'
+        ]|theme }}"></script>

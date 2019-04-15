@@ -1,0 +1,77 @@
+<div class="col-lg-8 offset-lg-2 flex-column align-items-center justify-content-center logo-header mb-3">
+    <img src="/plugins/cleanse/worldcup/assets/images/logo-62-65.png"
+         class="main-logo-off" alt="The Feast World Cup Logo">
+    <div class="xiv-logo">Final Fantasy XIV</div>
+</div>
+
+{% partial __SELF__~'::_en_nav' %}
+
+<div class="cup-content col-lg-8 offset-lg-2 py-3 bg-cup">
+    <h1>Setup Teams and Players</h1>
+
+    <div class="mt-2 card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-info"
+                        data-request="onLoadCreation"
+                        data-request-update="'{{ __SELF__ }}::new': '#teamResult'"
+                        data-toggle="modal"
+                        data-target="#teamModal">
+                    Create New Team
+                </button>
+
+                {% flash %}
+                <p id="flash">Team: <span class="text-info">{{ message }}</span> was updated.</p>
+                {% endflash %}
+            </div>
+
+            <hr>
+
+            <h3>Team List</h3>
+            {% if teams.count > 0 %}
+            <div class="category-group">
+                {% for t in teams %}
+                <div class="border border-secondary p-3 d-flex align-items-start">
+                    <img src="{{ t.getLogoThumb(48) }}"
+                         class="img-thumbnail mr-3" alt="{{ t.name }}">
+                    <div class="team-info pt-1">
+                        <p>{{ t.name }}<br>
+                            <small class="text-secondary font-weight-bold">{{ t.region|upper }}</small></p>
+                    </div>
+
+                    <div class="actions ml-auto">
+                        <button type="button" class="btn btn-outline-primary"
+                                data-request="onRequestTeam"
+                                data-request-data="id: {{ t.id }}"
+                                data-request-update="'{{ __SELF__ }}::team': '#teamResult'"
+                                data-toggle="modal"
+                                data-target="#teamModal">
+                            Edit {{ t.name }}
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-info">No Teams in database.</p>
+            {% endif %}
+
+            <div id="result">
+                {% partial '@edit' %}
+            </div>
+        </div>
+    </div>
+
+{% partial __SELF__~'::_footer' %}
+</div>
+
+<!-- Scripts -->
+<script src="{{ [
+            'assets/js/jquery.min.js',
+            'assets/js/popper.min.js',
+            'assets/js/bootstrap.min.js',
+            '@framework',
+            '@framework.extras',
+            'assets/js/pvpaissa.js'
+        ]|theme }}"></script>
+{% scripts %}

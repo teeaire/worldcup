@@ -48,6 +48,23 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #AB001C;
 }
 
+.btn-eu-link,
+.btn-jp-link,
+.btn-na-link {
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+.btn-eu-link {
+  color: #52b04f;
+}
+.btn-jp-link {
+  color: #9472c4;
+}
+.btn-na-link {
+  color: #ed515b;
+}
+
 .badge-tank {
   color: #fff;
   background-color: #4A90E2;
@@ -189,6 +206,83 @@ h1, h2, h3, h4, h5, h6 {
 
 .contribute-wrapper {
   height: 66vh;
+}
+
+//Teams
+.team-wrapper {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  box-shadow: 1rem 1rem 0 rgba(255, 255, 255, 0.07);
+
+  &.eu {
+    border: 5px double rgba(35, 226, 92, 0.1);
+  }
+
+  &.jp {
+    border: 5px double rgba(114, 65, 207, 0.1);
+  }
+
+  &.na {
+    border: 5px double rgba(193, 97, 92, 0.1);
+  }
+
+  img {
+    width: 96px;
+  }
+
+  .team-roster {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 .75rem;
+
+    li {
+      padding-left: 1rem;
+      text-indent: -.7rem;
+    }
+
+    li:before {
+      margin-right: .25rem;
+      content: "\00b7";
+      display: inline-block;
+    }
+
+    .team-leader:before {
+      content: "\00b9";
+      color: #4A90E2;
+    }
+
+    .team-sub-leader:before {
+      content: "\00b2";
+      color: #4A90E2;
+    }
+  }
+}
+
+//File input
+.input-group-btn > .image-preview-input {
+  position: relative;
+  overflow: hidden;
+  margin: 0px;
+  color: #fff;
+  background-color: #4A90E2;
+  border-color: #4A90E2;
+  border-top-right-radius: .5rem;
+}
+
+.image-preview-input input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.image-preview-input-title {
+  margin-left: 2px;
 }
 
 @media screen and (max-width: 575px) {

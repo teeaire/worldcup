@@ -1,0 +1,79 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="teamModalLabel">Create New Team</h5>
+        <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="edit-team-info">
+
+            {{ form_open({ request: __SELF__~'::onCreateTeam', files: true }) }}
+            <div class="form-group">
+                <label for="name">Team Name</label>
+                <input type="text" id="name" name="name" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region</label>
+                <select class="form-control" id="region" name="region">
+                    <option value="eu">Europe</option>
+                    <option value="jp">Japan</option>
+                    <option value="na">North America</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="image-file">Team Logo</label>
+                <div class="input-group image-preview mb-2">
+                    <input class="form-control image-preview-filename">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-outline-primary image-preview-clear" style="display:none;">
+                            <i class="fa fa-remove"></i> Clear
+                        </button>
+                    </span>
+                    <span class="input-group-btn">
+                        <div class="btn btn-primary image-preview-input">
+                            <i class="fa fa-folder-open"></i>
+                            <span class="image-preview-input-title">Choose File</span>
+                            <input type="file" accept="image/png, image/jpeg, image/gif" id="image-file" name="logo">
+                        </div>
+                    </span>
+                </div>
+            </div>
+
+            <hr>
+
+            <h4>Players</h4>
+
+            {% for i in 1..6 %}
+            {% if i == 1 %}
+            {% set ptitle = 'Team Leader' %}
+            {% elseif i == 2 %}
+            {% set ptitle = 'Team Sub-Leader' %}
+            {% else %}
+            {% set ptitle = 'Player ' ~ i %}
+            {% endif %}
+            <h6>{{ ptitle }}</h6>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="player_{{ i }}" class="sr-only">Name</label>
+                    <input type="text" id="player_{{ i }}" name="players[]" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="server_{{ i }}" class="sr-only">Server</label>
+                    <input type="text" id="server_{{ i }}" name="servers[]" class="form-control" placeholder="Server">
+                </div>
+            </div>
+            <hr class="border border-primary">
+            {% endfor %}
+
+            <button class="btn btn-outline-primary">Create Team</button>
+
+            {{ form_close() }}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+</div>

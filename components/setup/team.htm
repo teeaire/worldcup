@@ -1,0 +1,78 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="teamModalLabel">Team {{ team.name }} Profile</h5>
+        <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="edit-team-info">
+            {{ form_open({ request: __SELF__~'::onUpdateTeam' }) }}
+                <input type="hidden" name="id" value="{{ team.id }}">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" value="{{ team.name }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <select class="form-control" id="region" name="region">
+                        <option value="eu"{% if team.region == 'eu' %} selected{% endif %}>Europe</option>
+                        <option value="jp"{% if team.region == 'jp' %} selected{% endif %}>Japan</option>
+                        <option value="na"{% if team.region == 'na' %} selected{% endif %}>North America</option>
+                    </select>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="active" name="active"
+                           value="{{ team.active }}"{% if team.active == 1 %} checked{% endif %}>
+                    <label class="form-check-label" for="active">
+                        Team Active? (aka Displayed on frontend?)
+                    </label>
+                </div>
+
+                <button class="btn btn-primary btn-block">Update Team</button>
+            {{ form_close() }}
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Update Logo?</h4>
+                {{ form_open({ request: __SELF__~'::onUpdateLogo', files: true }) }}
+                <input type="hidden" name="id" value="{{ team.id }}">
+                <div class="form-group">
+                    <label for="image-file">Team Logo</label>
+                    <div class="input-group image-preview mb-2">
+                        <input class="form-control image-preview-filename">
+                        <span class="input-group-btn">
+                                <button type="button" class="btn btn-outline-primary image-preview-clear"
+                                        style="display:none;"><i class="fa fa-remove"></i> Clear
+                                </button>
+                            </span>
+                        <span class="input-group-btn">
+                                <div class="btn btn-primary image-preview-input">
+                                    <i class="fa fa-folder-open"></i>
+                                    <span class="image-preview-input-title">Choose File</span>
+                                    <input type="file" accept="image/png, image/jpeg, image/gif" id="image-file"
+                                           name="logo">
+                                </div>
+                            </span>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline-info">Update Logo</button>
+                {{ form_close() }}
+            </div>
+            <div class="col-lg-6 text-right">
+                <img src="{{ team.getLogoThumb(256, 256) }}"
+                     class="img-fluid mr-3" alt="{{ team.name }}">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+</div>

@@ -40,6 +40,10 @@ class Plugin extends PluginBase
             'Cleanse\WorldCup\Components\Contribute'   => 'cleanseCupContribute',
             'Cleanse\WorldCup\Components\Thanks'       => 'cleanseCupThanks',
 
+            //Temp
+            'Cleanse\WorldCup\Components\Teams'        => 'cleanseCupTeams',
+            'Cleanse\WorldCup\Components\Setup'        => 'cleanseCupSetup',
+
             //Recruit App
             'Cleanse\WorldCup\Components\Recruits'     => 'cleanseCupRecruits',
             'Cleanse\WorldCup\Components\Roles'        => 'cleanseCupRecruitsRoles',
