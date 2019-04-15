@@ -68,6 +68,10 @@ class Setup extends ComponentBase
         $team = $this->insertTeam($post['name'], $post['region']);
 
         foreach ($post['players'] as $key => $player) {
+            if ($player === '') {
+                continue;
+            }
+
             $p = new Player;
             $p->team_id = $team;
             $p->name    = $player;
