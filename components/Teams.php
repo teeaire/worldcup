@@ -53,8 +53,7 @@ class Teams extends ComponentBase
 
     private function getTeams()
     {
-        $teamList = Team::all()->keyBy('region')->groupBy('region');
-        return $teamList;
+        return Team::where('active', '=', 1)->get()->groupBy('region');
     }
 
     private function regionNames()

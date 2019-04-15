@@ -36,9 +36,14 @@
             {{ form_close() }}
         </div>
 
-        <hr>
+        <div class="delete-wrapper mt-1">
+            {{ form_open({ request: __SELF__~'::onDeleteTeam' }) }}
+            <input type="hidden" name="id" value="{{ team.id }}">
+            <button class="btn btn-danger btn-block">Delete Team?</button>
+            {{ form_close() }}
+        </div>
 
-        <div class="row">
+        <div class="row mt-1">
             <div class="col-lg-6">
                 <h4>Update Logo?</h4>
                 {{ form_open({ request: __SELF__~'::onUpdateLogo', files: true }) }}
@@ -70,6 +75,38 @@
                 <img src="{{ team.getLogoThumb(256, 256) }}"
                      class="img-fluid mr-3" alt="{{ team.name }}">
             </div>
+        </div>
+
+        <hr>
+
+        <div class="players-wrapper">
+            {{ form_open({ request: __SELF__~'::onUpdatePlayers' }) }}
+            <input type="hidden" name="id" value="{{ team.id }}">
+            {% for i in 0..5 %}
+            {% if i == 0 %}
+            {% set ptitle = 'Team Leader' %}
+            {% elseif i == 1 %}
+            {% set ptitle = 'Team Sub-Leader' %}
+            {% else %}
+            {% set ptitle = 'Player ' ~ (i + 1) %}
+            {% endif %}
+            <h6>{{ ptitle }}</h6>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="player_{{ i }}" class="sr-only">Name</label>
+                    <input type="text" id="player_{{ i }}" name="players[]" class="form-control" placeholder="Name"
+                           value="{{ team.players[i].name }}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="server_{{ i }}" class="sr-only">Server</label>
+                    <input type="text" id="server_{{ i }}" name="servers[]" class="form-control" placeholder="Server"
+                           value="{{ team.players[i].server }}">
+                </div>
+            </div>
+            <hr class="border border-primary">
+            {% endfor %}
+            <button class="btn btn-info btn-block">Update Players</button>
+            {{ form_close() }}
         </div>
     </div>
     <div class="modal-footer">

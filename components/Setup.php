@@ -57,6 +57,22 @@ class Setup extends ComponentBase
         return Redirect::to('/world-cup/setup');
     }
 
+    public function onDeleteTeam()
+    {
+        $post = post();
+        $this->deleteTeam($post);
+
+        return Redirect::to('/world-cup/setup');
+    }
+
+    public function onUpdatePlayers()
+    {
+        $post = post();
+        $this->updatePlayers($post);
+
+        return Redirect::to('/world-cup/setup');
+    }
+
     //private methods
     private function getTeams()
     {
@@ -135,6 +151,45 @@ class Setup extends ComponentBase
             $file->save();
 
             $team->logo()->add($file);
+        }
+    }
+
+    private function deleteTeam($post)
+    {
+        $team = Team::find($post['id']);
+
+        foreach ($team->players as $player) {
+            $this->deletePlayer($player);
+        }
+
+        $team->delete();
+    }
+
+    private function deletePlayer($player)
+    {
+        $player->delete();
+    }
+
+    private function updatePlayers($post)
+    {
+        $team = Team::find($post['id']);
+
+        foreach ($team->players as $player) {
+            $this->deletePlayer($player);
+        }
+
+        foreach ($post['players'] as $key => $player) {
+            if ($player === '') {
+                continue;
+            }
+
+            $p = new Player;
+            $p->team_id = $post['id'];
+            $p->name    = $player;
+            $p->server  = $post['servers'][$key];
+            $p->rank    = $key + 1;
+
+            $p->save();
         }
     }
 }
