@@ -99,7 +99,7 @@ class Setup extends ComponentBase
 
             $team->logo()->add($file);
         } else {
-            $file = (new File)->fromFile('./themes/pvpaissa/assets/images/default-paissa.jpg');
+            $file = (new File)->fromFile('./plugins/cleanse/worldcup/assets/images/favicon.png');
 
             $team->logo()->add($file);
         }
